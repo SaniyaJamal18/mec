@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Car Selection</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+    <!-- pop up start -->
+    <div class="modal" id="notification">
+        <div class="modal-dialog pop-custom">
+            <div class="modal-content pop-content">
+                <div class="">
+                    <div class="d-flex flex-column">
+                        <span class="material-symbols-outlined d-flex justify-content-center mt-3 text-primary">
+                            location_on
+                        </span>
+                        <h5 class="mx-2">
+                            Allow <b>GoMechanic</b> to access this device's location?
+                        </h5>
+                    </div>
+                    <hr />
+                    <div class="location-img d-flex justify-content-around">
+                        <div>
+                            <img src="../img/l.jfif" alt="" />
+                            <h5 class="d-flex align-items-center justify-content-center">
+                                Precise
+                            </h5>
+                        </div>
+                        <div>
+                            <img src="../img/map.jpg" alt="" />
+                            <h5 class="d-flex align-items-center justify-content-center">
+                                Approximate
+                            </h5>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="location-text">
+                        <a href="currentLocation.html">WHILE USING THE APP</a>
+                        <hr />
+                        <a href="currentLocation.html">ONLY THIS TIME</a>
+                        <hr />
+                        <a href="">DON'T ALLOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- pop up end -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex align-items-center mt-4">
+               <a href="select.html"><i class="fas fa-arrow-left mx-4"></i></a> 
+                <h3>Select your car</h3>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="border p-3">
+                    <div class="row d-flex flex-column">
+                        <div class="col">
+                            <img src="../img/car.png" alt="Car Image" class="img-fluid" />
+                        </div>
+                        <div class="col">
+                            <p>Car Description</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="border p-3">
+                    <p>Car Transmission Type</p>
+                    <span class="border px-4 py-2 rounded-2 manual-btn">
+                        <input type="radio" name="manual" id="manual" />
+                        <label for="manual" class="mx-4">Manual</label>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="border p-3">
+                    <p>Car Fuel Type</p>
+                    <div class="row mt-3">
+                        <div class="car-type border p-3 mx-4">
+                            <a href="./home.html">
+                                <img src="../img/petrol.png" alt="Petrol Icon" class="img-fluid" />
+                                <h5>Petrol</h5>
+                            </a>
+                        </div>
+                        <div class="car-type border p-3">
+                            <img src="../img/cng.png" alt="CNG Icon" class="img-fluid" />
+                            <h5 class="mt-3">CNG</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+        <script>
+            // Function to show the notification pop-up after 2 seconds
+            setTimeout(function () {
+                $('#notification').modal('show');
+            }, 2000);
+    
+
+        
+            // Function to handle the pop-up action
+            $('#notification .location-text a').click(function (event) {
+                event.preventDefault();
+                var action = $(this).text();
+                if (action === "WHILE USING THE APP" || action === "ONLY THIS TIME") {
+                    // Redirect to the desired page
+                    window.location.href = "currentLocation.html";
+                } else if (action === "DON'T ALLOW") {
+                    // Handle the case when the user doesn't allow access
+                    // For example, display a message or take alternative action
+                    console.log("User denied access");
+                    window.location.href = "select.html";
+                }
+            });
+        </script>
+</body>
+
+</html>

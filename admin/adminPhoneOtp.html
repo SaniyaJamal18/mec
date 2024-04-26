@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <!-- Add your custom CSS file if needed -->
+  <style>
+    /* Style for small input fields */
+    .small-input {
+      width: 36px;
+      text-align: center;
+    }
+
+    .error-message {
+      color: red;
+    }
+
+    /* Style for disabled button */
+    .btn-primary:disabled {
+      background-color: #cccccc;
+      border-color: #cccccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="d-flex flex-wrap">
+          <img src="../img/logo.png" alt="Your Image" />
+        </div>
+        <div class="slide top-mar">
+          <h2 class="">Enter OTP</h2>
+        </div>
+        <div class="row justify-content-center">
+          <input type="text" class="form-control small-input mx-2 otp-input" data-index="1" maxlength="1" />
+          <input type="text" class="form-control small-input mx-2 otp-input" data-index="2" maxlength="1" />
+          <input type="text" class="form-control small-input mx-2 otp-input" data-index="3" maxlength="1" />
+          <input type="text" class="form-control small-input mx-2 otp-input" data-index="4" maxlength="1" />
+        </div>
+        <div class="error-message mt-2"></div>
+        <div class="row justify-content-center mt-5">
+          <div class="col-md-12 mt-3 login">
+            <button class="btn btn-primary btn-block verify-btn " disabled>
+              Verify
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+
+
+    $(document).ready(function () {
+      // Set focus on the first OTP input field
+      $(".otp-input:first").focus();
+
+      $(".otp-input").on("input", function () {
+        var $this = $(this);
+        var value = $this.val();
+        var index = $this.data("index");
+        var expectedValue = index.toString();
+
+        if (value !== "") {
+          $this.next(".otp-input").focus();
+        }
+
+        // Check if all OTP inputs are filled
+        var allFilled = $(".otp-input")
+          .toArray()
+          .every(function (input) {
+            return $(input).val() !== "";
+          });
+
+        // Enable or disable the button based on input status
+        $(".verify-btn").prop("disabled", !allFilled);
+      });
+
+      $(".otp-input").on("keypress", function (event) {
+        if (event.which < 48 || event.which > 57) {
+          event.preventDefault();
+        }
+      });
+
+      // Handle Enter key press
+      $(".otp-input").on("keydown", function (event) {
+        if (event.which === 8) {
+          var $this = $(this);
+          var index = $this.data("index");
+
+          if (index > 1) {
+            // Prevent default backspace behavior (e.g., going back in browser history)
+            event.preventDefault();
+
+            // Clear the current input value
+            $this.val("");
+
+            // Move focus to the previous input field
+            $('.otp-input[data-index="' + (index - 1) + '"]').focus();
+          }
+        } else if (event.which === 13) { // Handle Enter key
+          event.preventDefault(); // Prevent form submission
+          $(".verify-btn").click(); // Trigger click event on Verify button
+        }
+      });
+
+
+
+      function showError(message) {
+        $(".error-message").text(message);
+      }
+
+      function clearError() {
+        $(".error-message").text("");
+      }
+
+      $(".verify-btn").on("click", function () {
+        var enteredOTP = "";
+        $(".otp-input").each(function () {
+          enteredOTP += $(this).val();
+        });
+
+        var expectedOTP = "1234";
+
+        if (enteredOTP === expectedOTP) {
+          // Navigate to the next page
+          window.location.href = "admindataShow.html";
+        } else {
+          showError("Invalid OTP");
+        }
+      });
+    });
+
+  </script>
+</body>
+
+</html>

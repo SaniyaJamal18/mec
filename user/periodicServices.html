@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome Page</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Add your custom CSS file if needed -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <style>
+      .service1-btn {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+      }
+
+      .service1-btn button {
+        padding: 12px;
+        border-radius: 13px;
+        border: 1px solid gray;
+      }
+      button.active {
+        color: blue;
+        border: 1px solid rgb(67, 67, 197);
+      }
+      .s-heading {
+        font-size: 1.3rem;
+        font-weight: bold;
+      }
+
+      .s-box {
+        border: 1px solid gray;
+        border-radius: 20px;
+      }
+
+      .s-box > span {
+        background-color: rgb(63, 223, 63);
+        border-radius: 10px 0px 10px 0px;
+        padding: 4px 10px;
+        color: white;
+      }
+      .s-box-left {
+        margin-right: 10px;
+      }
+      .s-box-left p {
+        font-weight: bold;
+      }
+      .s-box-left ul {
+        margin-left: 22px;
+        font-size: 0.8rem;
+      }
+
+      .s-card-img {
+        width: 7rem;
+        height: 7rem;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+      .s-card-img img {
+        width: 100%;
+      }
+      .s-box-right {
+        position: relative;
+      }
+      .s-box-right button {
+        padding: 5px 30px;
+        border-radius: 10px;
+        border: 1px solid red;
+        color: red;
+        position: absolute;
+        top: 90px;
+        left: 10px;
+      }
+      .s-price {
+        width: 70%;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .s-price span {
+        text-decoration: line-through;
+        font-size: 0.9rem;
+        color: gray;
+      }
+      .s-price h5 {
+        font-weight: bold;
+        font-size: 0.9rem;
+        margin-bottom: 0;
+      }
+      .s-price p {
+        color: rgb(16, 182, 16);
+        font-size: 0.9rem;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 d-flex align-items-center my-5">
+          <a href="services.html"
+            ><i
+              class="fa-solid fa-arrow-left"
+              style="font-size: 1.4rem; color: black"
+            ></i
+          ></a>
+          <h5 class="mx-4">Periodic Services</h5>
+        </div>
+        <div class="service1-btn">
+          <button type="button" class="active">Scheduled Packages</button>
+        <a href="breakMaintenance.html">  <button type="button">Brake Maintenance</button></a>
+        </div>
+        <h1 class="s-heading my-4 mx-3">Scheduled Packages</h1>
+        <div class="col-12">
+          <div class="col-11 s-box mb-3 mx-auto">
+            <span>RECOMMENDED</span>
+            <div class="s-box-data d-flex">
+              <div class="s-box-left">
+                <p class="my-2">Standard Service</p>
+                <ul>
+                  <li>Every 10000 lms / 6 Months</li>
+                  <li>Takes 6 hours</li>
+                  <li>1 Month Warranty</li>
+                  <li>Includes 15 Services</li>
+                </ul>
+              </div>
+              <div class="s-box-right">
+                <div class="s-card-img">
+                  <img src="../img/fill.avif" alt />
+                </div>
+                <button type="button">Add</button>
+              </div>
+            </div>
+            <div class="s-price d-flex my-3">
+              <span>₹ 4790</span>
+              <h5>₹ 3199</h5>
+              <p>30% OFF</p>
+            </div>
+          </div>
+          <div class="col-11 s-box mx-auto">
+            <div class="s-box-data d-flex mt-4">
+              <div class="s-box-left">
+                <p class="my-2">Standard Service</p>
+                <ul>
+                  <li>Every 10000 lms / 6 Months</li>
+                  <li>Takes 6 hours</li>
+                  <li>1 Month Warranty</li>
+                  <li>Includes 15 Services</li>
+                </ul>
+              </div>
+              <div class="s-box-right">
+                <div class="s-card-img">
+                  <img src="../img/fill.avif" alt />
+                </div>
+                <button type="button">Add</button>
+              </div>
+            </div>
+            <div class="s-price d-flex my-3">
+              <span>₹ 4790</span>
+              <h5>₹ 3199</h5>
+              <p>30% OFF</p>
+            </div>
+          </div>
+        </div>
+
+        <ul class="col-lg-12 col-sm-12 col-md-12 bottom help-customer ac">
+          <li> <a href="home.html"><i class="fa-solid fa-house"></i> </a>
+              <p>Home</p>
+          </li>
+          <li> <a href="sos.html"><span class="material-symbols-outlined">
+                      notifications_active
+                  </span> </a>
+              <p>SOS</p>
+          </li>
+          <li> <a href="services.html"><span class="material-symbols-outlined">
+                      airport_shuttle
+                  </span> </a>
+              <p>Services</p>
+          </li>
+          <li> <a href="help&Support.html"><span class="material-symbols-outlined">
+                      help
+                  </span> </a>
+              <p>Help</p>
+          </li>
+          <li> <a href="helloCustomer.html" class="active"><span class="material-symbols-outlined"
+                      data-target="#deleteGroup" data-toggle="modal">
+                      person
+                  </span>
+                  <p>My Profile</p>
+              </a>
+
+
+              <div class="modal" id="deleteGroup">
+                  <div class="modal-dialog">
+                      <div class="modal-content logout py-3">
+                          <div class=" mt-3">
+                              <h5 class="mt-3">Are you sure you want to logout?</h5>
+
+
+                              <div class="d-flex justify-content-around strategy-btn rounded-2 mt-4 logout-pop ">
+                                  <button type="button"
+                                      class="close rounded-1 d-flex justify-content-center bg-hover mb-2 px-5 py-2 rounded">No</button>
+                                  <button type="button"
+                                      class="close rounded-1 d-flex justify-content-center bg-hover mb-2 px-5 py-2 rounded"
+                                      data-dismiss="modal">Yes</button>
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+
+          </li>
+
+
+      </ul>
+      </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

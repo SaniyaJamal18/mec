@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin and SOS Management</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Add your custom CSS file if needed -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <style>
+      .table thead tr th {
+        border: 2px solid rgb(15, 15, 13) !important;
+        font-size: 1.2rem;
+        background-image: linear-gradient(
+          0deg,
+          rgb(54, 184, 255),
+          rgb(7, 35, 50)
+        );
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .table {
+        border-collapse: collapse;
+      }
+      .table tbody tr td {
+        border: 2px solid rgb(18, 19, 21) !important;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .w-100 {
+        width: 100%;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      
+      #sosList{
+        overflow: auto;
+      }
+
+      #sosData{
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- <h1>Admin and SOS Management</h1> -->
+
+      <div id="adminForm">
+        <!-- <h2>Create Admin</h2> -->
+        <form id="adminForm">
+          <!-- <label for="mobile">Mobile:</label> -->
+          <!-- <input type="text" id="mobile" name="mobile" required> -->
+
+          <!-- <label for="otp">OTP:</label> -->
+          <!-- <input type="text" id="otp" name="otp" required> -->
+
+          <!-- <button type="submit">Create Admin</button> -->
+        </form>
+      </div>
+
+      <div id="sosList">
+        <h2 class="text-center">SOS Request</h2>
+        <table class="table table-striped w-100 text-center">
+          <thead>
+            <tr>
+              <th>Mobile</th>
+              <th>Location</th>
+              <th>Advance Payment</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="sosData"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const adminForm = document.getElementById("adminForm");
+        const sosDataList = document.getElementById("sosData");
+
+        adminForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          createAdmin();
+        });
+
+        getAllSos();
+
+        function createAdmin() {
+          const mobile = document.getElementById("mobile").value;
+          const otp = document.getElementById("otp").value;
+
+          fetch("http://192.168.1.46:8080/api/admin", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ mobile: mobile, otp: otp }),
+          })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Failed to create admin");
+              }
+              alert("Admin created successfully");
+            })
+            .catch((error) => {
+              console.error("Error creating admin:", error);
+            });
+        }
+
+        function getAllSos() {
+          fetch("http://192.168.1.46:8080/api/admin/sos")
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error("Failed to fetch SOS data");
+              }
+              return response.json();
+            })
+            .then((data) => {
+              displaySosData(data);
+            })
+            .catch((error) => {
+              console.error("Error fetching SOS data:", error);
+            });
+        }
+
+        function displaySosData(sosData) {
+          sosData.forEach((sos) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                    
+                        <td>${sos.mobile}</td>
+                        <td>${sos.location}</td>
+                        <td>${sos.advance_payment}</td>
+                        <td><button class="btn btn-danger">Pending..</button></td>
+                   
+                    `;
+            sosDataList.appendChild(row);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

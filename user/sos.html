@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <!-- Add your custom CSS file if needed -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+      .text-center-1 {
+        text-align: center;
+      }
+
+      .map-con img {
+        height: 50px;
+        width: 70px;
+      }
+    </style>
+</head>
+
+<body>
+  <div class="container-fluid" style="height:89vh;">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12 col-md-12 location d-flex align-items-center mt-5">
+        <div>
+          <span class="d-flex align-items-center mt-3">
+            <i class="fa-solid fa-location-dot"></i>
+            <h5 class="mx-2">Peer Gate Area</h5>
+          </span>
+          <p class="">Peer Gate Area Bhopal, Bhopal Division MP</p>
+        </div>
+        <div class="mx-2">
+          <div class="img-icon">
+            <img src="../img/carrr.png" alt />
+          </div>
+          <button type="button">EON</button>
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+    <!-- <button id="get-location" style="display: none">Get Location</button>
+      <div id="map"></div>
+    </div> -->
+
+
+  
+  
+
+    <h1 class="map-heading mx-4">Choose your Emergency Service</h1>
+    <div class="container-fluid">
+      <div class="row map-con sos-text d-flex">
+        <div class="col-sm-4 col-4 text-center-1 my-3">
+          <a href="sos2.html" style="text-align:none ;"> <img src="../img/battery.png" alt="" /></a>
+          <h6>Battery Jumpstart</h6>
+        </div>
+        <div class="col-sm-4 col-4 text-center-1 my-3">
+          <img src="../img/fuel.png" alt="" />
+          <h6>Car Fuel</h6>
+        </div>
+        <div class="col-sm-4 col-4 text-center-1 my-3">
+          <img src="../img/toe.png" alt="" />
+          <h6>Car Lift</h6>
+        </div>
+        <div class="col-sm-4 col-4 text-center-1 my-3">
+          <img src="../img/gas.png" alt="" />
+          <h6>Gas</h6>
+        </div>
+        <div class="col-sm-4 col-4 text-center-1 my-3">
+          <img src="../img/serrr.png" alt="" />
+          <h6>Car Self Starter Issue</h6>
+        </div>
+        <div class="col-sm-4 col-4 text-center-1 my-3">
+          <img src="../img/insurance.png" alt="" />
+          <h6>Insurance </h6>
+        </div>
+        <div class="col-sm-4 col-4 text-center-1 my-3">
+          <img src="../img/repair.png" alt="" />
+          <h6>Repair</h6>
+        </div>
+        <div class="col-sm-4 col-4 text-center-1 my-3">
+          <img src="../img/ser6.png" alt="" />
+          <h6>Car Wash</h6>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+  
+
+
+  </div>
+
+  <ul class="col-lg-12 col-sm-12 col-md-12 bottom  ac p-2">
+    <li>
+      <a href="home.html"><i class="fa-solid fa-house"></i>
+        <p>Home</p>
+      </a>
+    </li>
+    <li>
+      <a href="sos.html" class="active"><span class="material-symbols-outlined">
+          notifications_active
+        </span>
+        <p>SOS</p>
+      </a>
+    </li>
+    <li>
+      <a href="services.html"><span class="material-symbols-outlined"> airport_shuttle </span>
+        <p>Services</p>
+      </a>
+    </li>
+    <li>
+      <a href="help&Support.html"><span class="material-symbols-outlined"> help </span>
+        <p>Help</p>
+      </a>
+    </li>
+    <li>
+      <a href="helloCustomer.html"><span class="material-symbols-outlined"> person </span>
+        <p>My Profile</p>
+      </a>
+    </li>
+  </ul>
+
+  <script>
+    function initMap(latitude, longitude) {
+      console.log("Initializing map with coordinates:", latitude, longitude);
+
+      // Create a map object and specify the DOM element for display.
+      var map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: latitude || 0, lng: longitude || 0 },
+        zoom: 15,
+      });
+
+      var marker = new google.maps.Marker({
+        map: map,
+        position: { lat: latitude || 0, lng: longitude || 0 },
+        title: "User Location",
+      });
+    }
+
+    function gotLocation(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+      initMap(latitude, longitude);
+    }
+
+    function failedToGet() {
+      console.error("There was some issue getting the user's location");
+    }
+
+    document
+      .getElementById("get-location")
+      .addEventListener("click", function () {
+        navigator.geolocation.getCurrentPosition(gotLocation, failedToGet);
+      });
+
+    gotLocation({
+      coords: {
+        latitude: 22.7195687,
+        longitude: 75.8577258,
+      },
+    });
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPCNRlaRbt2t2B_6JjWNowpIlnI2rwqMs&callback=initMap"></script>
+</body>
+
+</html>
